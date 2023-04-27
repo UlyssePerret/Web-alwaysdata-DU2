@@ -1,0 +1,39 @@
+Nom : Perret
+Prenom : Ulysse
+Crée le 18 octobre 2019
+Version actuelle : 2.9
+Modifiée : 28 octobre 2019
+Sauvegarde et rendu voulu : le mercredi 30 octobre si possible (dernier save - envoie sur site) 
+Rendu pour le client : le lundi 4 octobre (avec la clé)Sommaire :
+- Les sélecteur CSS utilisées
+- Les règles média-queries
+- Transition
+- Archictecture et presentation des fichiers présent dans le dossier : 
+Les sélecteurs CSS utilisés sont :Class:
+.titre : pour les titres généraux (hau tde page)
+.menu-nav : pour le menu de navigation en haut de page
+.présentation : pour la div ou on mettra la présentation de la page / site touristique
+.a-voir : pour la div contiendra le paragraphe a voir (description du monument/ site)
+.info-complement : pour la section qui contiendra les infos complémentaires -> le tableau 
+.liens-externe : pour la section consacrée au liens extérieur (bibliographie des pages standard).
+.menu-retour : pour la div ou on met les retours (sommaire et haut de page) .mot-clé : pour les mots importants, clés du site 
+ID : 
+#titreprincipal : le titre en haut de la page#presentation-site : pour spécifier la div ou a mis la présentation du site (sur sommaire) #bibliographie : pour les sources externes utilisés pour la création du site (sur sommaire / remplace liens externes des autres page)
+#note-auteur : section ou je présente la genèse du projet, explication du choix du thème #animation-acceuil : pour l'animation de la page d'accueil 
+#rectangle-bouge : pour l'animation du rectangle proprement dit Ancre interne: 
+#hautpage: ancre pour aller rapide en haut de la page (commune a toutes les pages)Les règles média-queries sont : 
+@media all Ce régime général est en faite pour tous les écrans en générales et avec les règles média queries ci-dessous, s’applique finalement que sur les grands écrans @media handheld,screen and (max-width:400px){ )Cette règle est la pour les petits écrans mobiles.@media handheld, screen and (min-width:400px) and (max-width:1000px) Cette règle est pour les écrans moyen (tablette et écran ordi moyen)  @media priants Cette règle est  pour le cas particulier de l’imprimante . J’ai vérifié ce cas dans mon dossier étudeTransitionL'animation faite est juste simple, un rectangle qui bouge au survol du clic de la souris.J'ai préféré garder cette version simple.Presentation du dossier : 
+Dans le dossier racine, visitez-ladack-ulysseperret vous trouverez : Le document index.html est le "sommaire" ou page d'accueil du siteLe document lisez moi est ce document pour présenter le projet.
+Le dossier css contient nos trois feuilles de styles :	- classe-ils : tous le css commune a la structure interne et spécifique au site. Il regroupe tous les classes et ids
+	- globalstyle.css : il regroupe toutes les style lies aux structure html de basse (tel que html, section...)
+	- sommaire.css : il regroup uniquement les ids et classes spécifique pour la page sommaire.
+ Le dossier étude est la pour garder la trace du test de l’imprimante et de l’énoncé.
+Il contient ainsi:
+	-le document énoncé : 2019-10-LP_WAM-DU_II-LangagesDuWeb-Projet
+	- un dossier test-impression: dossier qui contient tous mes test impressions de mes pages
+	- un document versionning.txt : ce document était la pour faire le point de mon avancé, voir ce qui me restait a faire ou ce qui a été fait Le dossier html :
+	- alchi.htmk : pour le contenu de la page html d'alchi
+	- leh.html : pour le contenu de la page html de let
+	- thickset : pour le contenu de la page html de thiksey
+
+Les images viennes soit de wikipedia, soit des sites cités en source

@@ -1,0 +1,162 @@
+/* Pours les regles spécifique sur le themes
+page pour les ids, classes  */
+
+/* pour toutes les tailles superieur - ecran ordi*/
+@media all{
+/* Classe et Id Pour la structure du site -> a mettre dans ids.css */
+
+ 
+	/*Titres  */
+	/*titre principal : le titre de la page, */
+	#titre-principale{
+		margin: 0;
+		font-size: 2em;
+		text-decoration: underline;
+	}
+
+	.titre{ /*titre de section/ paragraphes generale */
+		text-decoration:underline;
+		text-align: center;
+	}
+
+	/*Petite Titre : pour les titre des articles, titre de paragraphs */
+	.petit-titre{ 
+		font-size: 1.5em;
+		color:red;
+	}
+
+	/* Pour la barre de Menu en haut  */
+	.menu-nav {
+		background-color :bisque;
+		font-size: 18px;
+		margin-top:1px;
+		padding-left: 10px;
+		border: 1px solid blue;
+	
+	}
+	.menu-nav a{
+		padding: 10px;
+		text-decoration:none;
+		color: black;
+	}
+	
+	.menu-nav a:hover{
+		text-decoration:underline;
+		color:blue;
+	}
+	/* Pour la presentation*/
+	.presentation{
+		background-color :bisque;
+		margin:1em;
+		padding-bottom: 10px;
+		border-radius:1em;
+	}
+	
+	/* Pour la section Info complement et le tableau complement */
+	.info-complement{
+		padding-bottom: 10px;
+	}
+
+	.tableau-info{ /*pour le tableau informatif */
+		border:1px solid black;
+		width:50%;
+		margin:0 25%;
+	}
+	
+	.tableau-info td{
+		border:1px solid black;
+	}
+
+		
+	/* Pour le footer/ Menu retour */	
+	.menu-retour{
+		background-color :bisque;
+		font-size: 18px;
+		margin-bottom: 0px;
+	}
+	.menu-retour a{
+		text-decoration: none;
+		color: black;
+
+	}
+	.menu-retour p{
+		margin-bottom:0;
+	}
+	
+	.menu-retour a:hover{
+		text-decoration: underline;
+		color: blue;
+	}
+
+		/*Mot clés*/
+	.mot-clé{
+		font-weight: bold;
+	}
+	
+	/* Pour les liens */
+	.liens-externe{
+		background-color :#ADD8E6 ;
+		margin:1em;
+		border-radius:1em;
+	
+	}
+}
+
+/* pour tablette - ecran moyen*/
+@media handheld, screen and (min-width:500px) and (max-width:1000px){
+
+}
+
+/*pour mobile */
+@media handheld,screen and (max-width:400px){
+
+/* Classe et Id Pour la structure du site -> a mettre dans ids.css */
+	/* Titre*/
+	.petit-titre{
+		margin:10px 10px;
+	}
+
+	/* Pour la barre de Menu en haut  */
+	.menu-nav {
+	padding:1px 1px;
+	margin:1px 1px;
+	}
+ 
+ 	.menu-nav a{
+		margin:0;
+		padding:0;
+	}
+	
+	/* Pour la presentation*/
+	.presentation{
+		margin:10px 10px;
+	}
+	/*  Image */
+	.image{
+		max-width:400px
+	}
+	
+	/* Pour la section Info complement et le tableau complement */
+	.info-complement{
+		margin:10px 10px;
+		padding-bottom: 10px;
+	}
+	.tableau-info{
+		width:50%;
+		margin:0 10%;
+	}
+	
+	/* pour la section des  liens*/
+	.liens-externe{
+		margin:10px 10px;
+	}
+}
+
+
+/* cas specifique imprimante - page blanche et pas d'anim */
+@media print{ 
+	/*on fait disparaitre le menu de navigation*/
+ .menu-nav{display: none;}
+} 
+
+

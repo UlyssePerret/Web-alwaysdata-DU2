@@ -1,0 +1,129 @@
+/*Page pour les regles communes aux document */
+/*Media querie */
+
+/* pour toutes les tailles superieur - ecran ordi*/
+@media all {
+/* Structure html Commmune */
+	/*Tout */
+	*{
+		margin:0;
+		padding:0;
+	}
+
+	html{
+  		height:100%;
+	}
+
+	body{
+		width:100%;
+  		margin:0;
+  		padding:0;
+		background-color :grey;
+		font-family: Arial, sans-serif;
+	}
+	/*Haut de page*/
+	header{
+		margin:  0 ;
+		height: 50px;
+		text-align: center;
+	}
+	/*Milieu de page */
+	section{
+		background-color:#ADD8E6 ; /*bleu clair */
+		border: 1px green solid; /*bleu*/
+		margin:1em;
+		padding:0.1em 1em ;
+		margin:1em;
+		border-radius: 2em;
+	}
+	aside{
+		margin :1em;
+	}
+	p{
+		margin :1em;
+	}
+ 
+ 	figure img{
+ 	 
+ 		max-width: 500px;
+	}
+	/* Pied de page*/
+	footer{
+		background-color:bisque;
+		margin-top: 1em;
+		margin-bottom: 0;
+		width: 100%; 
+	}
+}
+/*pour mobile */
+@media handheld,screen and (max-width:500px){
+/* Structure html Commmune */
+	section{
+	margin:10px 10px;
+	padding:10px 10px; 
+	border-radius:0;
+	border: 1px solid #ADD8E6;
+	}/*on a deminue les marge et enleve le border radius */
+	p{
+		margin:10px 1px;
+	}
+	figure img{
+		max-width: 400px;
+		width: 75%
+	}
+
+}
+
+/* pour tablette - ecran moyen*/
+@media handheld, screen and (min-width:500px) and (max-width:1000px){
+	section{
+	border-radius:1em;
+	}
+
+	/* Reponsive image */
+	figure img{
+		max-width: 500px;
+		width: 75%
+	}
+}
+
+/* cas specifique imprimante - page blanche et pas d'anim */
+@media print{
+  body {
+	width: auto!important;
+    color: #000!important;
+    font-family: serif;
+  	font-size: 12pt;
+  	background-color: #fff!important;
+  	color: #000!important;
+  	margin :0;
+  	}
+  		section{
+	margin:10px 10px;
+	padding:10px 10px; 
+	border-radius:0;
+ 
+	}/*on a deminue les marge et enleve le border radius */
+  p, h1, h2, h3  {
+	  color: #000!important;
+	  margin: auto!important;
+	}
+	p{
+	  orphans: 3; /* pas de ligne seule en bas */
+	  widows: 3; /* pas de ligne seule en haut */
+	}
+	h1 {
+	  page-break-before: always; /* chaque titre commence sur une nouvelle page */
+	}
+	h1, h2, h3, caption {
+	  page-break-after: avoid; /* pas de saut après ces éléments */
+	}
+
+	a {
+	  color: #000!important;
+	  text-decoration: underline!important;
+	}
+
+} 
+
+

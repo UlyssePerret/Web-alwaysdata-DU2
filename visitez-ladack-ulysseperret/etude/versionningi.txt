@@ -1,0 +1,80 @@
+Versionning
+Ce document permet de faire le point des version et de l'évolution du projet 
+Version 0.1 : Lecture et Étude   (18 octobre/matin)
+Cette version a été faite lors de la lecture du texte dans un premier temps , ce qui explique les prémises et les noms simples.
+- Creations de la page sommaire.html
+- Creations de trois documents HTML (doc1.html, doc2.html, doc3.html)
+- création d’une feuille de style (style.css)
+- création d’un readme pour faire le point évolutif du projet
+- Réflexion sur le média query
+
+Version 0.2 : Choix du thème (18 octobre/aprem)
+Cette version met en valeur le choix du thème, j’ai choisi de faire un site touristique sur le ladack
+- Renommages des documents suivant :  sommaire.html-> index.html 
+Doc1-> leh.html
+Doc2->thiksey.thml
+Doc3->aldi.html
+Style.css->globalstyle.css (pour les règles globales)
+- Creation des css  sommaire.css -> pour le sommaire
+Ids.css -> pour les ids, classe et règle css spécifiques aux thèmes
+- la structure du sommaire et du document a été définie
+Sommaire : menu - presentation - bibliographie
+Doc : présentation(texte + image)- a voir(texte + image) -  Info complémentaire (tableau) lien externe et le  Retour  en bas
+- Mediaqueries
+Les premiers regels média queries ont été faits @media all -> pour tous les écrans en général, qui avec les règles ci-dessous s’appliquera finalement aux grands écrans @media handheld,screen and (max-width:400px){ ) -> pour les petits écrans mobiles, tablettes @media handheld, screen and (min-width:400px) and (max-width:1000px) -> pour les ecru moyen (tablette et écran ordi moyen)  @media print -> pour le cas particulier de l’imprimante 
+- Les sélecteurs css de classe ont été crée pour la structure :
+Class: titre : pour les titres généraux menu-nav : pour le menu de navigation présentation : pour la div ou on métra la présentation de la page / site touristique retour : pour la div ou on met les retours (sommaire et haut de page)
+A-voir : pour la div contiendra le paragraphe a voir (description du monument/ site) info-complement : pour la fitv qui contiendra les infos complémentaires -> le tableau
+
+ID : titreprincipal : le titre en haut de la page
+Presentation-site : pour spécifier la div ou a mis la présentation du site (sur sommaire) bibliographie : pour les sources externes (sur sommaire)
+
+Ancre interne:
+Hautpage : ancre pour aller rapide en haut de la page (commune a toutes les pages)
+
+Version 0.3 : Structure du dossier - 19 octobre 2019
+Cette version permet la structure du dossier du projet
+- renommage et refonte de ce document en lisez-moi.txt
+- Structure du dossier pour respecter la charte (dossier css, HTML, images)
+- création d’un dossier étude pour stocker l’impression  et  l’énoncer
+- le nom du dossier «visitez-ladack-ulysse»
+- refonte des liens liée à la nouvelle structure.
+- Ajout des images (pour l’instant uniquement grande)
+- le contenu changé et basé sur Wikipédia
+
+Version 0.4 : Début charte graphique - sémantique  - 23 octobre 2019
+- Début de la mise en page
+- travaille sur la structure globale
+	- header (nav, titre)
+	- main et article
+- Tableau info => contenu indication géographique
+- CSS, mise en forme + balise (sémantique)
+- Verification avec w3c pour HTML
+
+Version 0.5 : Travaille sur le responsive des images - 24 octobre
+- Travaille sur images (taille) en respectant les règles de média queries fait 
+
+Version 0.6 :  Verifiication et Animation - 25 octobre
+- Choix de ne pas mettre de vidéo.
+- Mise d'une animation simple
+- Tentative de mettre une animation complexe (échoue)
+
+Version 0.7 :  Mise a jour de la sémantique 26 octobre
+- Verfication de la version print
+- Verification avec CSS et W3F Validation
+- mise a jour du fichier lisez-moi en mettant les derniers ajouts faits
+- mise a jour sémantique, termes 
+
+Version 1.0: Déplacement des Styles - Site local . 26 octobre
+On décide de finir le projet pour qu'il soit dans la bonne structure, notamment en déplaçant les styles dans nos 3 css respectifs . (On travailler avec un seul document avant )
+- Mise des classe et ids structurelles dans ids.css 
+- mise des classe et ids spécifique pour le sommaire dans sommaires.css
+- Renommage ids.css en classes-ids.css
+
+Version 1.1: Dernier motif - 28octobre
+-Relecture et dernière modification avec l'énoncé
+
+Version 2:0
+Mise en ligne 
+http://ulysseperret.alwaysdata.net/du2/visitez-ladack-ulysseperret/index.html
+(Référencement du projet sur mon site perso)

@@ -1,0 +1,92 @@
+/* Pour le css du sommaire uniquement*/
+
+
+/* pour toutes les tailles superieur - ecran ordi*/
+@media all and (min-width:1000px){
+	/*Presentation du site */
+	#presentation-site{
+		background-color :bisque;
+		border-radius:1em;
+	}
+	#presentation-site article{
+		background-color :bisque;
+	}
+	/*Pour la note de l'auteru, explication du site*/
+	#note-auteur{
+		margin:1em;
+		border-radius:1em;
+	}
+
+/*Bibliographie*/
+	#bibliographie{  /* Biblographique => uniquement sur sommaire*/
+		background-color :#ADD8E6 ;
+		margin:1em;
+		border-radius:1em;
+		min-height:9em;
+	} 
+	
+	/* Animation */
+	#animation-acceuil{
+		border:1px green solid;
+	}
+	
+	#animation-acceuil p{
+		color:black
+	}
+	
+	#rectangle-bouge{
+		background-color:bisque;
+		width:200px;
+		height:100px;
+		transition:all 0.5s ease;
+	}
+	#rectangle-bouge:hover{
+		background-color:blue;
+		width: 90%;
+		transition:all 0.5s ease;
+	}
+}
+
+/* pour tablette - ecran moyen*/
+@media handheld, screen and (min-width:500px) and (max-width:1000px){
+
+}
+
+/*pour mobile */
+@media handheld,screen and (max-width:400px){
+	/* Animation */
+	/* on fait une animation qui s'appelle rectangle qui bouge, car on represente un rectangle qui bougera au survolle du clic de la souris*/
+	
+	#rectangle-bouge{
+   background-color:bisque;
+   width:100px;
+   height:100px;
+   transition:all 0.5s ease;
+	}
+	
+	#rectangle-bouge:hover{
+    background-color:blue;
+    width:200px;
+	}
+
+	/* cas presentation pour sommaire */
+	#presentation-site{
+		margin:10px 10px;
+			border-radius:0;
+	}
+
+	#presentation-site article{
+		background-color :bisque;
+	}
+
+	#note-auteur{
+		margin:10px 10px;
+ 
+	}
+
+	#bibliographie{  /* Biblographique => uniquement sur sommaire*/
+		margin:10px 10px;
+	} 
+}
+
+

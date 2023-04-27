@@ -1,0 +1,135 @@
+body {
+
+    background-color: #dddddd;
+    margin: 0;
+    padding: 0;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.informations * {
+
+    color:rgb(100, 100, 100);
+}
+
+.menu {
+
+
+    font-size: 40px;
+    display: flex;
+    width: 100%;
+    background: #525252;
+    height:70px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.menu * {
+
+    color: #dddddd;
+    list-style: none;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+
+a > img {
+
+    height: 70px;
+    justify-content: flex-start;
+    position: absolute;
+    top:0px;
+    left:0px;
+}
+
+.searchBar input {
+
+    border: none;
+    background: #686868;
+    border-radius: 20px;
+    width: 250px;
+    outline: none;
+    padding: 10px;
+    caret-color: transparent;
+}
+
+#btn {
+
+    border: none;
+    background: #686868;
+    border-radius: 20px;
+    width: 150px;
+    outline: none;
+    padding: 10px;
+    caret-color: transparent;
+}
+
+#btn:hover {
+
+    cursor: pointer;
+}
+
+.map a {
+
+    fill: rgb(151, 151, 151);
+    stroke: rgb(255, 255, 255);
+    stroke-width: 0.5px;
+}
+
+.map a:hover {
+
+    fill: rgb(100, 100, 100);
+    animation-name: grow;
+    animation-duration: 0.5s;
+    animation-iteration-count: 0.1;
+}
+
+.main {
+
+    margin: 25px;
+    display: flex;
+    position: relative;
+}
+
+.desc {
+
+    margin: 25px;
+    font-size: 45px;
+}
+
+.humidity {
+
+    margin: 25px;
+    font-size: 45px;
+}
+
+.temp {
+
+    margin: 25px;
+    font-size: 45px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes grow {
+
+    0% {transform: scale(1);}
+    100% {transform: scale(1.5);}
+
+
+  }
+
+
+

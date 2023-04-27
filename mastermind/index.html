@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<title>Mastermind</title>
+
+	<!-- Meta-->
+ 
+	<meta charset="UTF-8">
+	<meta name = "description" content = "mastermind"/>
+	<meta name = "keywords" content = "mastermind en ligne,mastermind en javascript,javascript"/>
+
+	<!-- CSS-->
+	<link rel="stylesheet"   type="text/css"    href="style.css"/> 
+
+	 <!-- JS -->
+	<script  src="uapp.js"></script><!-- Script fait par ulysse-->
+	<script  src="script.js"></script> <!-- Script pour mode emploi-->
+
+</head>
+
+<body onload="ChargementPage()">
+
+	<!-- 1er Div  : Lancer le Jeu-->
+	 <div class=lancerjeu>
+	 	<button> Lancer le jeu</button>
+	 </div>
+	<!--div pour mode d'emploi-->
+	<button id="btnPopup" class="btnPopup">Mode d'emploi</button>
+	<div id="overlay" class="overlay">
+		<div id="popup" class="popup">
+			<h2>Mode d'emploi du MasterMind<span id="btnClose" class="btnClose">&times;</span></h2>
+			<p>Le but du jeu est de trouver la combinaison exacte, en ayant effectué le moins de coup possible.<br>
+			<br>
+			Au départ :<br>
+			Le plateau de jeu est vide, veuillez sélectionner le nombre de coups maximum que vous voulez (ce nombre de coups équivaut aux nombres de coups avant lequel vous devrez avoir trouvé la combinaison exacte, si vous n'y parvenez pas le jeu se relancera automatiquement). Sélectionner aussi le nombre de couleurs que vous souhaitez (si vous choisissez 5 couleurs, cela voudra dire que la combinaison exacte est composée de 5 couleurs).
+			En jeu :<br>
+			Lors du premier tour vous aurez juste à cliquer sur les couleurs de votre choix pour les placer (dans l'ordre de clic, si vous cliquez en 1er sur la couleur rouge, elle s'affichera en 1re sur le plateau). 
+			Une fois que vous avez rempli votre ligne, l'ordinateur pourra afficher différents types de pions (sur la droite de votre ligne). 
+			<br>
+			Différents types de pions* :<br> 
+			Les tirets : l'ordinateur affiche un tiret, cela veut dire que ni la couleur, ni la position est la bonne (autrement dit : la couleur n'est pas présente dans la combinaison exacte, ne la réutilisez pas).<br>
+			Les pions noirs : l'ordinateur affiche un pion noir, cela veut dire que vous avez trouvé une bonne couleur, mais qu'elle est mal placée (autrement dit : au tour suivant changez la couleur de position).
+			<br>
+			Les pions blancs : l'ordinateur affiche un pion blanc, cela veut dire que vous avez trouvé une bonne couleur et qu'elle est bien placée (autrement dit : au prochain tour, repositionnez-là au même endroit).
+			<br>
+			*Les pions sont placés en fonction de l'ordre sur votre ligne (ex : en 1er sur votre ligne, vous placez la couleur rouge et que l'ordinateur vous indiques, dans sa 1re case, un pion noir -> la couleur est bien présente sur la combinaison exacte, mais pas à la place où vous l'avez situé ce tour-ci). 
+			<br>
+			Fin :<br>
+			Le jeu est fini lorsque l'ordinateur vous affichera 4 pions blancs ou alors lorsque vous aurez atteint le nombre maximum de coups que vous avez renseigné au préalable. 
+			<br>
+			BON JEU.</p>
+			<script  src="script.js"></script>
+		</div>
+	</div>
+	<!--2eme Div : Jeu --> 
+	 <div class="fenetrejeu"> 
+ 
+	 	<!-- Div pour les Choix des paramétre du jeu -->
+	 	<div class="choix">
+	 		<label for="nbessais">Nombres essais maximum </label>
+
+	 		<select name="nbessais" id="nbessais" onchange="NbEssais();">
+           		<option value="10" selected="selected">10</option>
+           		<option value="15">15</option>
+           		<option value="20">20</option>
+       		</select>
+	 		 <br>
+
+	 		<label id="nbcouleurslabel">Nombres de couleurs </label>
+
+	 			<select name="nbcouleurs" id="nbcouleurs" onchange="NbCouleurs();">
+           			<option value="2">2</option>
+           			<option value="3">3</option>
+           			<option value="4">4</option>
+           			<option value="5" selected="selected">5</option>
+           			<option value="6">6</option>
+           			<option value="7">7</option>
+           			<option value="8">8</option>
+       			</select>
+	 	</div>
+ 
+
+	 	<!-- Div pour  le plateau de Jeu / fond du plateau-->
+	 	<div class="plateau">
+	 		<!--Ligne  des selection des couleurs  -->
+	      <!-- Rouge/Jaune/Vert/Cyan/Violet/Bleu/Orange/Marron --> 
+	      <div class="selection-container flexer">
+
+	        <div class="selection-outer">
+	          <div class="selection-inner rouge" onClick="AjoutCouleur('rouge');">
+	          </div>
+	        </div>
+	        <div class="selection-outer">
+	          <div class="selection-inner jaune" onClick="AjoutCouleur('jaune');">
+	          </div>
+	        </div>
+	        <div class="selection-outer">
+	          <div class="selection-inner vert" onClick="AjoutCouleur('vert');">
+	          </div>
+	        </div>
+	        <div class="selection-outer">
+	          <div class="selection-inner cyan" onClick="AjoutCouleur('cyan');">
+	          </div>
+	        </div>
+	        <div class="selection-outer">
+	          <div class="selection-inner violet" onClick="AjoutCouleur(' violet');">
+	          </div>
+	        </div>
+	        <div class="selection-outer">
+	          <div class="selection-inner bleu" onClick="AjoutCouleur('bleu');">
+	          </div>
+	        </div>
+	        <div class="selection-outer">
+	          <div class="selection-inner orange" onClick="AjoutCouleur('orange');">
+	          </div>
+	        </div>
+	        <div class="selection-outer">
+	          <div class="selection-inner marron" onClick="AjoutCouleur('marron');">
+	          </div>
+	        </div>
+	      </div>
+
+	 		<!-- Grille pour deviner -->
+	      	<div class="conteneur-devine">
+
+	      	<!--Ligne 1 => Celle du début et qui active au début  -->
+	        	<div class="devine-row flexer" id="ligne1">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          	<div class="devine-pegs flexer">
+		          	<!-- On met 4 case, car le mastermind a 4 case  -->
+		          	<div class="devine-peg active selectcoul1"></div>
+		            <div class="devine-peg active selectcoul2"></div>
+		            <div class="devine-peg active selectcoul3"></div>
+		            <div class="devine-peg active selectcoul4"></div>
+
+	          	</div>
+		          <!--Grille pour affichage Placement (pion noir/blanc/Tirer-->
+		          <div class="grade-pegs flexer first-grade">
+		            <div class="grade-peg placement1">
+		            	 
+		            </div>
+		            <div class="grade-peg placement2"></div>
+		            <div class="grade-peg placement3"></div>
+		            <div class="grade-peg placement4"></div>
+		          </div>
+	        	</div>
+
+	        <!--Ligne 2 : standard -->
+	        <div class="devine-row flexer" id="ligne2">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille pour affichage Placement (pion noir/blanc/Tiret)-->
+	          <div class="grade-pegs flexer">
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+	        <!--Ligne 3 -->
+	        <div class="devine-row flexer" id="ligne3">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer">
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+ 			<!--Ligne 4 -->
+	        <div class="devine-row flexer" id="ligne4">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer">
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+ 			<!--Ligne 5 -->
+	        <div class="devine-row flexer" id="ligne5">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer">
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+ 			<!--Ligne- 6 -->
+	        <div class="devine-row flexer" id="ligne6">
+
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer"  >
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+ 			<!--Ligne 7 -->
+	        <div class="devine-row flexer" id="ligne7">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer">
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+ 			<!--Ligne 8 -->
+	        <div class="devine-row flexer" id="ligne8">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer"  >
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+			<!--Ligne 9 -->
+	        <div class="devine-row flexer" id="ligne9"> 
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer"  >
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+ 			<!--Ligne 10-->
+	        <div class="devine-row flexer" id="ligne10">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg   selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer"  >
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+	        <!--Ligne 11-->
+	        <div class="devine-row flexer" id="ligne11">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer" id="ligne11c">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer" id="ligne11p" >
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+		<!--Ligne 12-->
+	        <div class="devine-row flexer"  id="ligne12" >
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer" id="ligne12c">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer" id="ligne12p">
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+	        <!--Ligne 13-->
+	        <div class="devine-row flexer" id="ligne13">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer" id="ligne13c">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer" id="ligne13p">
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+		<!--Ligne 14-->
+		<div class="devine-row flexer" id="ligne14">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer" id="ligne14c">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer" id="ligne14p">
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+	      <!--Ligne 15-->
+		<div class="devine-row flexer" id="ligne15">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer" id="ligne15c">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer" id="ligne15p">
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+	<!--Ligne 16-->
+			<div class="devine-row flexer" id="ligne16">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer" id="ligne16c">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer" id="ligne16p">
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+		 <!--Ligne 17-->
+			<div class="devine-row flexer" id="ligne17">
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer" id="ligne17c">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer" id="ligne17p">
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+	        	      <!--Ligne 18-->
+			<div class="devine-row flexer"  id="ligne18" >
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer" id="ligne18c">
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer"  id="ligne18p">
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+	      <!--Ligne 19-->
+			<div class="devine-row flexer"  id="ligne19" >
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer" id="ligne19c" >
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg  selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer" id="ligne19p" >
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+			<!--Ligne 20-->
+			<div class="devine-row flexer" id="ligne20" >
+	        	<!--Grille pour mettre notre choix de couleur -->
+	          <div class="devine-pegs flexer" id="ligne20c" >
+		          	<div class="devine-peg  selectcoul1"></div>
+		            <div class="devine-peg  selectcoul2"></div>
+		            <div class="devine-peg  selectcoul3"></div>
+		            <div class="devine-peg   selectcoul4"></div>
+	          </div>
+	          <!--Grille   Placement  -->
+	          <div class="grade-pegs flexer" id="ligne20p" >
+	            <div class="grade-peg placement1"></div>
+	            <div class="grade-peg placement2"></div>
+	            <div class="grade-peg placement3"></div>
+	            <div class="grade-peg placement4"></div>
+	          </div>
+	        </div>
+</div>
+	    <div class="nbrEssaisrestclass">
+	    	<label id="nbrEssaisrestid">Nombres essais restants</label>
+			<input readonly type="number" name="nbrEssaisrestid" id="nbrEssaisrestidinput"  >
+
+	    </div>
+
+	    <button id="buttonok" type="button" value="Ok" onClick="MessageValidation()">Valider</button><!-- Bouton Pour Valider le Mastermind-->
+
+	</div><!--Fin 2eme Div : Jeu -->
+</div>
+ 	<!--3eme Div : Mode emploi--> 
+</body>
+</html>
+<!-- 
+Changelog
+Date : 13 février
+Mise à Jour : 20 février 
+
+v0.1 - Structure basée sur la maquette - Création
+
+V0.1.2
+Intégration de la ressource Plateau jeu 
++ adaptation
+
+V.0.1.3
+Ajout mise en commun CSS + image
+
+V.0.1.3.1 - 27 Février -Ulysse
+Ajout lien JS -uapp  
+Fonction NbCouleurs() sur le bouton select => NbCouleurs
+Bouton de validation : Ok  _> MessageValidation()  
+onLoad dans le body  
+
+V.0.1.3.2 - 27 Février -Ulysse
+Correcton de la mise par défault => 5 couleur de base
+
+V.0.1.4 - 5  Mars -Ulysse
+Disposition du choix du couleur = mise dans le premier ligne 
+Affiche 10 ligne (défault)
+Ajout d'un id pour ligne et classe pour les bouton
+Input nb essaie restant : readlony (pour ne pas modifier
+
+V.0.1.6
+Correction W3C
+Correction bug Essais
+remise en commun dans un dossier
+-->
